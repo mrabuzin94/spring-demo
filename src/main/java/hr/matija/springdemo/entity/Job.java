@@ -1,5 +1,6 @@
 package hr.matija.springdemo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,6 +21,7 @@ public class Job {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "job_id")
+    @JoinColumn(name = "worker_id")
+    @JsonIgnoreProperties("jobList")
     private Worker worker;
 }

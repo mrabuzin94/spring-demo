@@ -3,6 +3,8 @@ package hr.matija.springdemo.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "worker")
 @Data
@@ -21,4 +23,7 @@ public class Worker {
 
     @Column(name = "age")
     private Long age;
+
+    @OneToMany(mappedBy="worker", fetch = FetchType.EAGER)
+    private List<Job> jobList;
 }
