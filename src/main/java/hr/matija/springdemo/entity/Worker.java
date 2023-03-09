@@ -1,5 +1,6 @@
 package hr.matija.springdemo.entity;
 
+import hr.matija.springdemo.dto.WorkerType;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -14,7 +15,7 @@ public class Worker {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "worker_sequence")
-    @SequenceGenerator(name = "car_sequence", allocationSize = 10)
+    @SequenceGenerator(name = "worker_sequence", allocationSize = 10)
     @Setter(AccessLevel.PRIVATE)
     private Long id;
 
@@ -23,6 +24,10 @@ public class Worker {
 
     @Column(name = "age")
     private Long age;
+
+    @Column(name = "workerType")
+    @Enumerated(value = EnumType.STRING)
+    private  WorkerType workerType;
 
     @OneToMany(mappedBy="worker", fetch = FetchType.EAGER)
     private List<Job> jobList;

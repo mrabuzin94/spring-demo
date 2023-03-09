@@ -1,11 +1,11 @@
 package hr.matija.springdemo.controller;
 
+import hr.matija.springdemo.dto.WorkerDto;
 import hr.matija.springdemo.entity.Worker;
 import hr.matija.springdemo.service.WorkerService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,8 +20,8 @@ public class WorkerController {
     }
 
     @PostMapping(path = "/save")
-    private ResponseEntity<String> saveWorker(@RequestBody Worker worker) {
-        workerService.create(worker);
+    private ResponseEntity<String> saveWorker(@RequestBody WorkerDto workerDto) {
+        workerService.create(workerDto);
         return ResponseEntity.ok("Worker created!");
     }
 

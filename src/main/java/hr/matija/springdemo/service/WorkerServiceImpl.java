@@ -1,6 +1,8 @@
 package hr.matija.springdemo.service;
 
+import hr.matija.springdemo.dto.WorkerDto;
 import hr.matija.springdemo.entity.Worker;
+import hr.matija.springdemo.mapper.WorkerMapper;
 import hr.matija.springdemo.repository.WorkerRepository;
 import org.springframework.stereotype.Service;
 
@@ -11,14 +13,19 @@ import java.util.Optional;
 public class WorkerServiceImpl implements WorkerService {
 
     private final WorkerRepository workerRepository;
+    private final WorkerMapper workerMapper;
 
-    public WorkerServiceImpl(WorkerRepository workerRepository) {
+    public WorkerServiceImpl(WorkerRepository workerRepository, WorkerMapper workerMapper) {
         this.workerRepository = workerRepository;
+        this.workerMapper = workerMapper;
     }
 
     @Override
-    public Worker create(Worker worker) {
-        return workerRepository.save(worker);
+    public WorkerDto create(WorkerDto workerDto) {
+
+        Worker worker = workerRepository.save(workerMapper.workerDtoToWorker(workerDto));
+
+        return workerDto;
     }
 
     @Override

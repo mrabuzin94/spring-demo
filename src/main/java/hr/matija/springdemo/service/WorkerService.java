@@ -1,5 +1,6 @@
 package hr.matija.springdemo.service;
 
+import hr.matija.springdemo.dto.WorkerDto;
 import hr.matija.springdemo.entity.Worker;
 
 import java.util.List;
@@ -7,7 +8,7 @@ import java.util.Optional;
 
 public interface WorkerService {
 
-    Worker create(Worker worker);
+    WorkerDto create(WorkerDto worker);
 
     List<Worker> getAllWorkers();
 
