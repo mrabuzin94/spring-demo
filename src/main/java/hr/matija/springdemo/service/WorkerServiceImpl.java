@@ -29,6 +29,20 @@ public class WorkerServiceImpl implements WorkerService {
     }
 
     @Override
+    public WorkerDto update(WorkerDto workerDto, Long id) {
+        Optional<Worker> optionalWorker = workerRepository.findById(id);
+
+        if(optionalWorker.isPresent()) {
+           workerMapper.updateWorkerFromWorkerDto(workerDto, optionalWorker.get());
+           workerRepository.save(optionalWorker.get());
+        } else {
+            throw new RuntimeException("Worker does not exist");
+        }
+
+        return workerDto;
+    }
+
+    @Override
     public List<Worker> getAllWorkers() {
         return workerRepository.findAll();
     }

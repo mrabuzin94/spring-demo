@@ -36,6 +36,6 @@ public interface WorkerMapper {
 
     @Mapping(target = "id", ignore = true)
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void updatePersonFromDto(WorkerDto workerDto, @MappingTarget Worker worker);
+    void updateWorkerFromWorkerDto(WorkerDto workerDto, @MappingTarget Worker worker);
 
 }

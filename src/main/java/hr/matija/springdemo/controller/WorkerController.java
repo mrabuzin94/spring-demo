@@ -20,9 +20,15 @@ public class WorkerController {
     }
 
     @PostMapping(path = "/save")
-    private ResponseEntity<String> saveWorker(@RequestBody WorkerDto workerDto) {
+    private ResponseEntity<WorkerDto> saveWorker(@RequestBody WorkerDto workerDto) {
         workerService.create(workerDto);
-        return ResponseEntity.ok("Worker created!");
+        return ResponseEntity.ok(workerDto);
+    }
+
+    @PostMapping(path = "/update/{id}")
+    private ResponseEntity<WorkerDto> updateWorker(@RequestBody WorkerDto workerDto, @PathVariable Long id) {
+        workerService.update(workerDto, id);
+        return ResponseEntity.ok(workerDto);
     }
 
     @DeleteMapping(path = "/delete/{id}")

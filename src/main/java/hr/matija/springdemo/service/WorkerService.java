@@ -10,6 +10,8 @@ public interface WorkerService {
 
     WorkerDto create(WorkerDto worker);
 
+    WorkerDto update(WorkerDto worker, Long id);
+
     List<Worker> getAllWorkers();
 
     void deleteWorker(Long id);
